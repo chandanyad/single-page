@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Call .NET from JavaScript</title>
+</head>
+<body>
+<div id="ds-terms-of-service"></div>
+<script src="https://demo.docusign.net/clickapi/sdk/latest/docusign-click.js"></script>
+<script>
+    docuSignClick.Clickwrap.render(
+        {
+            agreementUrl:
+                "https://demo.docusign.net/clickapi/v1/redeem?agreementToken=AcTZT8gt-J9OqUVV3xCKFD1afdzqLCIPZC7PwmwP-KyFaE7dc7rDwwDZL3nULlB_tRH5H6He-lqt3up2wt2NI5NDAmvb5tOAZ2z82NIU2JN15BqFc-G_nFJsSAeYLye7bhHwL1uLJrWLxENQ7a_uwowNcTEl6d5g5lCRb25uPmD9fc5Y7I-aJAa8atjXQhI_jSKhclf_fxmlznG4AfYsP4L7FoI15vt5u1xxXhZ-lUiAz3b-9byQRmvUVC6x6Ru-qHQikoyOZZHJichXPWIUsgz1JXERYblvMCWLUxGBMm0eu7XPXLC2TyZVMgg5NPZDX_7_iZcjBO2H-II2SndS8l1u-cNgrf3JFS1jFd9zumeLD7aE3NIY5CQEY-EDLBLzHme5Is-foLsXTFe3UfBGiGGxX7888MVO1zVLi9caBSd3x3CszQ5JzMY5N7vN_NklUG5y4h4dycr7mjcDbfYesf2hznWS-aXOCfMUlAI0WH9pbTa0G3oP13X3rDwebdVhRmel70Wk6ZwDj7vvCciyZQmZcVkTS3TrzoHA2btVoqPr0OeeWRpCalVyMuy47W4o65sZmLK9KPK2TEbszLVq5k-zduc5lvweCMKzhlL-NpeKTPeGkhULp9jxt3ctZJ5IYArcfpTF4S0EZSiLmACy2A2j6n4sQGEzgxDYa4hPc9WngQ9Cz5QfmEuq8D9qlP8UJodUsIk6Y4XD-MiKUK-6i2y9RU8J_DEd-9lPnsSgbRZppLzF90IfrcwI3gs1inDdDsow6sp5cEK1teSfnQXAK1pNKB7DG97jUZQM277JV5bJ7DS6WE11WQT1papcvNf6nS_1SubDwAtv_rAljjH2bxDb2TjxsnzfGk07qjnaifgIxIjlNr5DaiacbJwdgav4tgTqNrNI81w4SXGajf9AMeUAm6NuXlTXlpKWDemEFpN_rjeVWiKuAD8z0o1WJp7qkSFn9Rzuk4SuxjavnamjqkOqpCGfsO7AU_4iwHZicos6F0IVIaVrh_EsYXYz3CeTcQ2",
+            onAgreed: function (agreementData) {
+                console.log("User agreed on Terms & Conditions!");
+            },
+            onAgreeing: function (agreementData) {
+                console.log("User Click the agree button ..... Proceeding to update the system services!");
+            },
+            onDeclining: function (agreementData) {
+                console.log("User Click the decline button ..... Updating status now");
+            },
+            onDeclined: function (agreementData) {
+                //console.log(JSON.stringify(agreementData));
+                console.log("User declined Terms & Conditions!");
+                console.log(Object.values(agreementData));
+            },
+            onError: function (error) {
+                console.log(error);
+            },
+            style: {
+                container: {
+                    backgroundColor: "#ffffff",
+                    borderWidth: "2",
+                },
+                agreementStatement: {
+                    fontFamily: "Helvetica, Arial, sans-serif",
+                    fontWeight: "normal",
+                },
+                documentLink: {
+                    color: "#333",
+                    fontWeight: "normal",
+                },
+                agreeButton: {
+                    fontWeight: "bold",
+                    fontFamily: "Helvetica, Arial, sans-serif",
+                    backgroundColor: "#d2051e",
+                },
+            },
+        },
+        "#ds-terms-of-service"
+    );
+</script>
+</body>
+</html>
